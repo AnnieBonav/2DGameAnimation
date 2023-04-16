@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 
 
-public class ArrowScript : MonoBehaviour
+public class ArrowParticleScript : MonoBehaviour
 {
     [SerializeField]
     private string _playerTag = "Player";

@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnFire(InputValue value)
     {
-        Debug.Log("Called Fire");
+        // Debug.Log("Called Fire");
     }
 
     private void Jump()
