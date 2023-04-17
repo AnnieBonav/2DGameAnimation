@@ -24,7 +24,13 @@ public class WorldController : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
+        print("Moving?: " + value.Get<Vector2>());
         Vector2 inputVector = value.Get<Vector2>();
         _movement = new Vector2(inputVector.x, inputVector.y).normalized;
+    }
+
+    public void OnJump(InputValue value)
+    {
+        print("I guess I am jumping");
     }
 }

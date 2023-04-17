@@ -18,13 +18,14 @@ public class ProjectileLauncher : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // TODO: Change to OnFire
-        {
-            Vector3 position = _camera.ScreenToWorldPoint(Input.mousePosition);
-            position.z = 0;
-            InstantiateProjectile(position);
-            print("Input: " + Input.mousePosition + "Position: " + position);
-        }
+    }
+
+    public void OnFire()
+    {
+        Vector3 position = _camera.ScreenToWorldPoint(Input.mousePosition);
+        position.z = 0;
+        InstantiateProjectile(position);
+        print("Input: " + Input.mousePosition + "Position: " + position);
     }
 
     public void InstantiateProjectile(Vector3 vector)
