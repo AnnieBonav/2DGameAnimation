@@ -9,17 +9,12 @@ using static UnityEngine.GraphicsBuffer;
 
 public class ProjectileLauncher : MonoBehaviour
 {
-    [SerializeField] private Projectile _projectile;
     [SerializeField] private Camera _camera;
-    private int _rayDistance = 300;
-    private void Awake()
-    {
-    }
 
-    private void Update()
+    private void Start()
     {
+        StartCoroutine("EjectArchProjectile");
     }
-
     public void OnFire()
     {
         Vector3 position = _camera.ScreenToWorldPoint(Input.mousePosition);
@@ -41,6 +36,16 @@ public class ProjectileLauncher : MonoBehaviour
                 arrow.transform.position = vector;
                 arrow.SetActive(true);                
             }
+        }
+    }
+
+    private IEnumerator EjectArchProjectile() // int minAngle, int maxAngle
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            print("Eject");
+            InstantiateProjectile(new Vector2(0,0));
         }
     }
 }
