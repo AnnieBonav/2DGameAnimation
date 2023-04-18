@@ -11,16 +11,6 @@ public class Projectile : MonoBehaviour
     private Vector2 _direction;
     [SerializeField] private float _thrust = 2f;
 
-    private void OnEnable()
-    {
-        print("On enable was called");
-    }
-
-    private void OnDisable()
-    {
-        print("On disable was called");
-    }
-
     public void SetDirection(Vector2 direction)
     {
         _direction = direction;
@@ -35,6 +25,8 @@ public class Projectile : MonoBehaviour
     {
         gameObject.SetActive(true);
         transform.position = ejectOrigin;
+        float degrees = Vector2.SignedAngle(new Vector2(1,0), direction);
+        transform.rotation = Quaternion.Euler(0, 0, degrees);
         _direction = direction;
     }
 

@@ -6,6 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 
 // Launches projectile either cylinder inside out, cylinder oustide in, a predefined arc,
 // Handles direction and speed
+// TODO: Add option to either be or not be affected by gravity (the projectiles launched)
 
 public class ProjectileLauncher : MonoBehaviour
 {
@@ -30,22 +31,22 @@ public class ProjectileLauncher : MonoBehaviour
         StartCoroutine("EjectArchProjectile");
     }
 
-    public void InstantiateProjectile()
-    {
-        Projectile projectile = _projectilePool.GetPooledObject();
-        Vector2 direction = new Vector2(0,1);
-        if (projectile != null)
-        {
-            projectile.Activate(_ejectionOrigin, direction);
-        }
-    }
-
     private IEnumerator EjectArchProjectile() // int minAngle, int maxAngle
     {
         while (true)
         {
             InstantiateProjectile();
             yield return new WaitForSeconds(_secondsBetweenProjectiles);
+        }
+    }
+
+    public void InstantiateProjectile()
+    {
+        Projectile projectile = _projectilePool.GetPooledObject();
+        Vector2 randomDirection = UnityEngine.Random.insideUnitCircle;
+        if (projectile != null)
+        {
+            projectile.Activate(_ejectionOrigin, randomDirection);
         }
     }
 }
