@@ -13,6 +13,8 @@ The most important components are:
 ### Object Pooling
 I implemented a fully generic Object Pooling Class wich's instance can be used to create a Pool of any Type. An Object Pool is useful in, for example, a projectile launcher, where there will be multiple instances of a Projectile. Instead of creating and destroying them, we create N instances of the object (in this case, a projectile) at the start of the scene. And then activate them and deactivate them as needed. This improves performance!
 
+https://user-images.githubusercontent.com/46715001/232895701-e4670d52-16dd-46e8-b3a1-6c09c0778c66.mp4
+
 ### Projectile Launcher
 To launch my arrows, I have a ProjectileLauncher Class which has an instance of ObjectPool with type Projectile. The Projectile handles all of the logic on how to move itself, and it is separate from the actual rendered object which, in my case, is an Arrow prefab. But it could be anything else as a projectile, as the Prefab that is taken can be changed in the editor.
 
@@ -30,5 +32,8 @@ As of the 18th of april:
 - The XBox Input binding exists.
 
 The current state is still prototyping. ETA for a minimum playable game: May 4th!
+
+
+
 
 
