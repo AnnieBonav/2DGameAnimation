@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UIElements;
 
-public class ObjectPool<T> : MonoBehaviour where T: MonoBehaviour
+public class ObjectPool<T> where T: MonoBehaviour
 {
     public static ObjectPool<T> ObjectPoolInstance;
     private List<T> _pooledObjects;
@@ -25,7 +25,7 @@ public class ObjectPool<T> : MonoBehaviour where T: MonoBehaviour
         T temporaryObject;
         for(int i = 0; i < _poolSize; i++)
         {
-            temporaryObject = Instantiate(_prefabToPool).GetComponent<T>();
+            temporaryObject = Object.Instantiate(_prefabToPool).GetComponent<T>();
             temporaryObject.gameObject.SetActive(false);
             _pooledObjects.Add(temporaryObject);
         }

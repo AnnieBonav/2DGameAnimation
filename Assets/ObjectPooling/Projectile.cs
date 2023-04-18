@@ -8,8 +8,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private Rigidbody2D _rb;
-    [SerializeField] private float _velocity;
-    private float _thrust = 1f;
+    private Vector2 _direction;
+    [SerializeField] private float _thrust = 2f;
 
     private void OnEnable()
     {
@@ -21,41 +21,43 @@ public class Projectile : MonoBehaviour
         print("On disable was called");
     }
 
+    public void SetDirection(Vector2 direction)
+    {
+        _direction = direction;
+    }
+
     public void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Activate(Vector2 ejectOrigin)
+    public void Activate(Vector2 ejectOrigin, Vector2 direction)
     {
-        //transform.position = ejectOrigin;
-        OnEnable();
+        gameObject.SetActive(true);
+        transform.position = ejectOrigin;
+        _direction = direction;
     }
 
     public void Deactivate()
     {
-        OnDisable();
+        gameObject.SetActive(false);
     }
 
     private void FixedUpdate()
     {
-
         Move();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        print("Entered. Collision: " + collision.name + " Velocity: " + _velocity);
         if(collision.name is "Boundary")
         {
-            gameObject.SetActive(false);
+            Deactivate();
         }
     }
 
     public void Move()
     {
-        //_rb.AddForce(new Vector2(_velocity, 0)); // TODO: Get direction based on ejection. Laundher sends it to arrow instance
-        _rb.AddForce(new Vector2(_velocity, _velocity));
-        //print("Move: " + _velocity);
+        _rb.AddForce(_direction * _thrust);
     }
 }

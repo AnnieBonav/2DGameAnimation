@@ -13,6 +13,8 @@ public class ProjectileLauncher : MonoBehaviour
     [SerializeField] private Transform _originTransform;
     [SerializeField] private int _projectilesAmount;
     [SerializeField] private GameObject _projectilePrefab;
+    [SerializeField] private float _secondsBetweenProjectiles = 5f;
+
     private Vector2 _ejectionOrigin; // Ejected origin is only calculated once. I could create a line that it follows and then update the ejection origin so the logic of the ejection origin is separated from the logic of ejecting
     private ObjectPool<Projectile> _projectilePool;
 
@@ -31,10 +33,10 @@ public class ProjectileLauncher : MonoBehaviour
     public void InstantiateProjectile()
     {
         Projectile projectile = _projectilePool.GetPooledObject();
+        Vector2 direction = new Vector2(0,1);
         if (projectile != null)
         {
-            projectile.transform.position = _ejectionOrigin;
-            projectile.gameObject.SetActive(true);
+            projectile.Activate(_ejectionOrigin, direction);
         }
     }
 
@@ -42,8 +44,8 @@ public class ProjectileLauncher : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.01f);
             InstantiateProjectile();
+            yield return new WaitForSeconds(_secondsBetweenProjectiles);
         }
     }
 }
