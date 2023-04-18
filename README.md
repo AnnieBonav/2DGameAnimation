@@ -11,10 +11,10 @@ The most important components are:
 
 ## Cool coding/artsy things
 ### Object Pooling
-I implemented a fully generic Object Pooling Class wich's instance can be used to create a Pool of any Type. An Object Pool is useful in, for example, a projectile launcher, where there will be multiple instances of a Projectile. Instead of creating them and destroying them, with cretae N instances of the object (in this case, a projectile) at the start of the game. And then activate them and deatctivate them as needed.
+I implemented a fully generic Object Pooling Class wich's instance can be used to create a Pool of any Type. An Object Pool is useful in, for example, a projectile launcher, where there will be multiple instances of a Projectile. Instead of creating and destroying them, we create N instances of the object (in this case, a projectile) at the start of the scene. And then activate them and deactivate them as needed. This improves performance!
 
 ### Projectile Launcher
-To launch my arrows, I have Projectile Launcher which has an instance of Object Pool with type Projectile. The Projectile handles all of the logic on how to move itself, and it is separate from the actual rendered object which, in my case, is an Arrow prefab. But it could be anything else as a projectile, as the Prefab that is taken can be changed in the editor.
+To launch my arrows, I have a ProjectileLauncher Class which has an instance of ObjectPool with type Projectile. The Projectile handles all of the logic on how to move itself, and it is separate from the actual rendered object which, in my case, is an Arrow prefab. But it could be anything else as a projectile, as the Prefab that is taken can be changed in the editor.
 
 ### Animations
 Xolotl animations were made using Spine. This means that changing between them in Unity is pretty cool, using Spine-Unity integration and API
