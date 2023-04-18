@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -10,9 +11,30 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float _velocity;
     private float _thrust = 1f;
 
+    private void OnEnable()
+    {
+        print("On enable was called");
+    }
+
+    private void OnDisable()
+    {
+        print("On disable was called");
+    }
+
     public void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+    }
+
+    public void Activate(Vector2 ejectOrigin)
+    {
+        //transform.position = ejectOrigin;
+        OnEnable();
+    }
+
+    public void Deactivate()
+    {
+        OnDisable();
     }
 
     private void FixedUpdate()

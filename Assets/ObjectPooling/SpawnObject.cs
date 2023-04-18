@@ -22,7 +22,7 @@ public class SpawnObject : MonoBehaviour
 
     public void InstantiateProjectile(Vector3 vector)
     {
-        GameObject arrow = ObjectPool.ObjectPoolInstance.GetPooledObject();
+        /*GameObject arrow = ObjectPool.ObjectPoolInstance.GetPooledObject();
         if (arrow != null)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -33,7 +33,7 @@ public class SpawnObject : MonoBehaviour
                 arrow.transform.position = vector;
                 arrow.SetActive(true);
             }
-        }
+        }*/
     }
 
     private IEnumerator EjectArchProjectile() // int minAngle, int maxAngle
