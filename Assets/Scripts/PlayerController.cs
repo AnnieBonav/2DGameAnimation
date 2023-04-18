@@ -29,17 +29,28 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeState(PlayerState newState)
     {
-        _playerState = newState;
         switch (newState)
         {
             case PlayerState.Idle:
+                print("Idle");
+                _playerState = newState;
                 _animationState.SetAnimation(0, _idleAnimation, true);
                 // _rigidBody.angularVelocity = 0;
                 // _rigidBody.inertia = 0;
                 _rigidBody.velocity = new Vector2(0, 0);
                 break;
             case PlayerState.Running:
-                _animationState.SetAnimation(0, _runAnimation, true);
+                if (_playerState != PlayerState.Running)
+                {
+                    print("Running");
+                    _playerState = newState;
+                    _animationState.SetAnimation(0, _runAnimation, true);
+
+                }
+                else
+                {
+                    print("Else");
+                }
                 break;
         }
     }
@@ -57,7 +68,7 @@ public class PlayerController : MonoBehaviour
         _animationState = _skeletonAnimation.AnimationState;
         _skeleton = _skeletonAnimation.Skeleton;
 
-        _animationState.SetAnimation(0, _runAnimation, true);
+        _animationState.SetAnimation(0, _idleAnimation, true);
     }
 
     private void FixedUpdate()
@@ -87,7 +98,6 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputValue value)
     {
         Vector2 inputVector = value.Get<Vector2>();
-        print("Moving?: " + inputVector);
         _movement = new Vector2(inputVector.x, 0f);
         if(_movement.x != 0) {
             _direction = _movement.x;

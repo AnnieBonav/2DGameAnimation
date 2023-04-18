@@ -10,32 +10,27 @@ using static UnityEngine.GraphicsBuffer;
 public class ProjectileLauncher : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
+    [SerializeField] private Transform _originTransform;
+    private Vector2 _ejectionOrigin; // Ejected origin is only calculated once. I could create a line that it follows and then update the ejection origin so the logic of the ejection origin is separated from the logic of ejecting
+
+    private void Awake()
+    {
+        _ejectionOrigin = _originTransform.position;
+    }
+
 
     private void Start()
     {
         StartCoroutine("EjectArchProjectile");
     }
-    public void OnFire()
-    {
-        Vector3 position = _camera.ScreenToWorldPoint(Input.mousePosition);
-        position.z = 0;
-        InstantiateProjectile(position);
-        print("Input: " + Input.mousePosition + "Position: " + position);
-    }
 
-    public void InstantiateProjectile(Vector3 vector)
+    public void InstantiateProjectile()
     {
         GameObject arrow = ObjectPool.ObjectPoolInstance.GetPooledObject();
         if (arrow != null)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            RaycastHit rayHit;
-            if (!Physics.Raycast(ray, out rayHit))
-            {
-                arrow.transform.position = vector;
-                arrow.SetActive(true);                
-            }
+            arrow.transform.position = _ejectionOrigin;
+            arrow.SetActive(true);                
         }
     }
 
@@ -45,7 +40,7 @@ public class ProjectileLauncher : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             print("Eject");
-            InstantiateProjectile(new Vector2(0,0));
+            InstantiateProjectile();
         }
     }
 }
