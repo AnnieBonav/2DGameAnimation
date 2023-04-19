@@ -1,17 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
-using UnityEngine.Pool;
-using UnityEngine.UIElements;
 
-public class ObjectPool<T> where T: MonoBehaviour
+public class OnlyProjectilePool : MonoBehaviour
 {
-    private List<T> _pooledObjects;
-    private GameObject _prefabToPool;
+    /*private List<Projectile> _pooledProjectiles;
+    private Projectile _prefabToPool; // A prefab is a aGame Object :0
     private int _poolSize;
 
-    public ObjectPool(int amountToPool, GameObject prefabToPool)
+    public OnlyProjectilePool(int amountToPool, GameObject prefabToPool)
     {
         _poolSize = amountToPool;
         _prefabToPool = prefabToPool; // Sent through whoever instantiates the Object Poo;
@@ -20,13 +17,13 @@ public class ObjectPool<T> where T: MonoBehaviour
 
     private void InitializePool()
     {
-        _pooledObjects = new List<T>();
-        T temporaryObject;
-        for(int i = 0; i < _poolSize; i++)
+        _pooledProjectiles = new List<Projectile>();
+        GameObject temporaryProjectile;
+        for (int i = 0; i < _poolSize; i++)
         {
-            temporaryObject = Object.Instantiate(_prefabToPool).GetComponent<T>();
-            temporaryObject.gameObject.SetActive(false);
-            _pooledObjects.Add(temporaryObject);
+            temporaryProjectile = Object.Instantiate(_prefabToPool);
+            temporaryProjectile.gameObject.SetActive(false);
+            temporaryProjectile.Add(temporaryProjectile);
         }
 
     }
@@ -41,5 +38,5 @@ public class ObjectPool<T> where T: MonoBehaviour
             }
         }
         return default(T);
-    }
+    }*/
 }

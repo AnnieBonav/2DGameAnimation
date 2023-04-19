@@ -8,6 +8,7 @@ using static UnityEngine.GraphicsBuffer;
 // Handles direction and speed
 // TODO: Add option to either be or not be affected by gravity (the projectiles launched)
 
+[RequireComponent(typeof(MeshCollider))]
 public class ProjectileLauncher : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
