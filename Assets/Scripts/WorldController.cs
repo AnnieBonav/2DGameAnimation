@@ -9,7 +9,7 @@ public class WorldController : MonoBehaviour
     private Vector2 _movement;
     private Transform _transform;
 
-    [SerializeField] private float _rotationSpeed = 5f;
+    [SerializeField] private float _rotationSpeed = 50f;
 
     public void Awake()
     {
@@ -29,8 +29,9 @@ public class WorldController : MonoBehaviour
         _movement = new Vector2(inputVector.x, inputVector.y).normalized;
     }
 
-    public void OnJump(InputValue value)
+    public void Move() // Works if claled from invoke unity event calback
     {
-        print("I guess I am jumping");
+        Vector2 inputVector = new Vector2(1,0);
+        _movement = new Vector2(inputVector.x, inputVector.y).normalized;
     }
 }
