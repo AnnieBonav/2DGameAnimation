@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -82,5 +79,7 @@ public class DummyCharacterController : MonoBehaviour
 
         print("Angle: " + angleBetweenVectors);
         _movement = new Vector2(Mathf.Cos(angleBetweenVectors), Mathf.Sin(angleBetweenVectors));
+
+        print("Cos: " + Mathf.Cos(angleBetweenVectors) + "Sin: " + Mathf.Sin(angleBetweenVectors));
     }
 }
