@@ -78,7 +78,7 @@ namespace RotatingWorld
 
         public void OnFire(InputValue value)
         {
-            Debug.Log("Called Fire");
+            // Debug.Log("Called Fire");
         }
 
         public void OnRotate(InputValue value)
