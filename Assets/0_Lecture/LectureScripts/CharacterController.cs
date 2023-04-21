@@ -9,7 +9,7 @@ namespace ClassStuff
 {
     public class CharacterController : MonoBehaviour, IDamageable
     {
-        public static event Action Jumped;
+        // public static event Action Jumped;
 
         private float _direction;
         [SerializeField]

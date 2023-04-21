@@ -108,11 +108,6 @@ namespace RotatingWorld
                 transform.Rotate(0, 180f, 0);
             }
         }
-
-        public void OnTriggerEnter2D(Collider2D collision)
-        {
-            print(collision.name);
-        }
     }
 }
 
