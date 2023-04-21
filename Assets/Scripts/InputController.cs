@@ -35,6 +35,15 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""d390e6c1-931b-4531-98a5-b2667d63fc39"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -52,7 +61,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""08c8d0e1-495d-4660-ae13-5317ebf65b2f"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""path"": ""<XInputController>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -63,13 +72,24 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""1f885dd4-7a28-48b5-baa7-e81484aed10c"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""path"": ""<XInputController>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""379bbe98-da7b-4861-bc7e-713291af70b8"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""XBoxController"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -199,6 +219,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         // World
         m_World = asset.FindActionMap("World", throwIfNotFound: true);
         m_World_Move = m_World.FindAction("Move", throwIfNotFound: true);
+        m_World_Jump = m_World.FindAction("Jump", throwIfNotFound: true);
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
@@ -265,11 +286,13 @@ public partial class @InputController: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_World;
     private List<IWorldActions> m_WorldActionsCallbackInterfaces = new List<IWorldActions>();
     private readonly InputAction m_World_Move;
+    private readonly InputAction m_World_Jump;
     public struct WorldActions
     {
         private @InputController m_Wrapper;
         public WorldActions(@InputController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_World_Move;
+        public InputAction @Jump => m_Wrapper.m_World_Jump;
         public InputActionMap Get() { return m_Wrapper.m_World; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -282,6 +305,9 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
         }
 
         private void UnregisterCallbacks(IWorldActions instance)
@@ -289,6 +315,9 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
         }
 
         public void RemoveCallbacks(IWorldActions instance)
@@ -417,6 +446,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
     public interface IWorldActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
     public interface IPlayerActions
     {

@@ -13,6 +13,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "d390e6c1-931b-4531-98a5-b2667d63fc39",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -30,7 +39,7 @@
                 {
                     "name": "left",
                     "id": "08c8d0e1-495d-4660-ae13-5317ebf65b2f",
-                    "path": "<Gamepad>/leftStick/left",
+                    "path": "<XInputController>/leftStick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -41,13 +50,24 @@
                 {
                     "name": "right",
                     "id": "1f885dd4-7a28-48b5-baa7-e81484aed10c",
-                    "path": "<Gamepad>/leftStick/right",
+                    "path": "<XInputController>/leftStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "379bbe98-da7b-4861-bc7e-713291af70b8",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XBoxController",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
