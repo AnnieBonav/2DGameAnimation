@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace RotatingWorld
 {
-    public class PlayerController : MonoBehaviour
+    public class DummyPlayerController : MonoBehaviour
     {
         [SerializeField] private bool _verbose;
         [SerializeField] private float _jumpForce = 200;
@@ -12,11 +12,6 @@ namespace RotatingWorld
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
-        }
-
-        private void FixedUpdate()
-        {
-            
         }
 
         public void OnJump(InputValue value)
