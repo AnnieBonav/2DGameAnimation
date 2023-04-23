@@ -5,14 +5,18 @@ using UnityEngine.InputSystem;
 public class Level : MonoBehaviour
 {
     public static event Action<int> OnLapsChanged;
+    public static event Action CompletedPuzzle;
 
     [SerializeField] bool _verbose = true;
+    [SerializeField] int _lapsToWin = 3;
+
     private bool _hasDirection = false;
     private bool _goingFuture = false;
     private bool _goingCorrectDirection = true; // Correct direction is the direction we started going in
     private bool _passedOtherBoundary = false;
     // private bool _selectedBoundary = false;
     private int _laps = 0;
+
 
     private void ResetVariables()
     {
@@ -31,6 +35,10 @@ public class Level : MonoBehaviour
     private void CheckBoundaries(bool futureBoundary)
     {
         ChangeLaps(futureBoundary);
+        if(_laps >= _lapsToWin)
+        {
+            CompletedPuzzle.Invoke();
+        }
         OnLapsChanged.Invoke(_laps); // Not every time they are changed this changes, but I do not care lol
     }
 
