@@ -52,97 +52,209 @@ public class Level : MonoBehaviour
             if(_verbose) print("0) Started.");
             return;
         }
-        if(!_goingFuture && !futureBoundary && !_passedOtherBoundary && _goingCorrectDirection) // If I am not going to the future and I touuch the not future boundary after I have not passed the other boundary and I am going into the correct direction then i started going  into the wrong direction, which would be the future
-        {
-            _laps--;
-            if (_laps < 0) // I reset if my laps are 0 because it means the player can now go into the different time
-            {
-                ResetVariables();
-            }
-            else
-            {
-                _goingCorrectDirection = false;
-            }
-            if (_verbose) print("0.0) The other option?");
-            return;
-        }
-        if (_goingFuture && !futureBoundary && !_passedOtherBoundary && _goingCorrectDirection) // If I am touching the other boundary and I am going in the correct direction then I am in the correct path to complete a lap, so I make true my _passedOtherBoundary true so whenever i touch the correct boundary one again, I complete one lap
-        {
-            _passedOtherBoundary = true;
-            if (_verbose) print("1) Touched other boundary, going in the correct direction."); // SHould not be called when the correct direction is going into the not futyre
-            return;
-        }
-        if (futureBoundary && _passedOtherBoundary && _goingCorrectDirection) // If i touch the selected boundary again and and passedOherBoudnary is true, then I have completed a lap
-        {
-            _laps++;
-            _passedOtherBoundary = false;
-            if (_verbose) print("2) Touched selected boundary, going in the correct direction, reset having touched other boundary.");
-            return;
-        }
-        if(!_goingFuture && futureBoundary && !_passedOtherBoundary && _goingCorrectDirection) // 3) but I am going into correct directuin because I am going to the future
-        {
-            _laps++;
-            _passedOtherBoundary=false;
-            if (_verbose) print("3.0) Touched other boundary while going into the correct direction: past. Reset having touched other boundary.");
-            return;
-        }
-        if (futureBoundary && !_passedOtherBoundary && _goingCorrectDirection) // If I touch the selected boundary but I have not passed the other boundary and I am starting to go in the incorrect direction after just completing a lap. So I loose a lap. IT IS THE FIRST TIME I GO IN THE WRONG DIRECTION
-        {
-            _laps--;
-            if(_laps < 0) // I reset if my laps are 0 because it means the player can now go into the different time
-            {
-                ResetVariables();
-            }
-            else
-            {
-                _goingCorrectDirection = false;
-            }
-            if (_verbose) print("3) Touched selected boundary without having touched other boundary, so started to go backwards."); // Backwards in selection as a concept, can be either past or future
-            return;
-        }
-        if(futureBoundary && !_passedOtherBoundary && !_goingCorrectDirection) // I started to go wrong but I am going correct again
-        {
-            _laps++;
-            _goingCorrectDirection = true;
-            if (_verbose) print("4) Touched selected boundary without having touched other boundary, so started going forward."); // Forward in selection as a concept, can be either past or future
-            return;
-        }
-        if (!futureBoundary && !_passedOtherBoundary && !_goingCorrectDirection) // Started going in wrong direction again
-        {
-            _goingCorrectDirection = false;
-            _passedOtherBoundary = true; // Passed oteher boundary is true but going in the wrong direction? 
-            
-            if (_verbose) print("5) Touched other boundary while going in the wrong direction, so continue to go in the wrong direction.");
-            return;
-        }
-        if (!futureBoundary && _passedOtherBoundary && !_goingCorrectDirection) // If I am touching the other boundary, and I am going NOT in the correct direction 
-        {
-            _passedOtherBoundary = false;
-            if (_verbose) print("6) Touched past boundary and currently going to the future.");
-            return;
-        }
-        if(futureBoundary && _passedOtherBoundary && !_goingCorrectDirection) // I am completing my wrong direction lapp
-        {
-            _laps--;
-            if( _laps < 0)
-            {
-                ResetVariables();
-            }
-            else
-            {
-                _passedOtherBoundary = false;
-            }
-            if (_verbose) print("7) Touched sleected boundary after touching other boundary and going in the wrong direction, so completed a lap in wrong direction, so lost a lap.");
-            return;
-        }
-        if (!futureBoundary && _passedOtherBoundary && _goingCorrectDirection) // If I touch the other boundary and I passed the otehr boundary before and I was going in the correct direction then I started to go in the wrong direction
-        {
-            _goingCorrectDirection = false;
-            if (_verbose) print("**) Touched other boundary and STARTED to go wrong.");
-            return;
 
-        }
+        switch (futureBoundary)
+        {
+            case true:
+                if (_goingFuture && futureBoundary && _passedOtherBoundary && _goingCorrectDirection) // If i touch the selected boundary again and and passedOherBoudnary is true, then I have completed a lap
+                {
+                    _laps++;
+                    _passedOtherBoundary = false;
+                    if (_verbose) print("0.0) THIS Touched selected boundary, going in the correct direction, reset having touched other boundary.");
+                    return;
+                }
 
+                if (_goingFuture && futureBoundary && _passedOtherBoundary && _goingCorrectDirection)
+                {
+                    // _laps++;
+                    // _passedOtherBoundary = false;
+                    if (_verbose) print("**) Can this happen?");
+                    return;
+                }
+
+                if (!_goingFuture && futureBoundary && !_passedOtherBoundary && _goingCorrectDirection) // 3) but I am going into correct directuin because I am going to the future
+                {
+                    _passedOtherBoundary = true;
+                    if (_verbose) print("0.1) Touched other boundary while going into the correct direction: past. Reset having touched other boundary.");
+                    return;
+                }
+
+                if (_goingFuture && futureBoundary && !_passedOtherBoundary && _goingCorrectDirection) // If I touch the selected boundary but I have not passed the other boundary and I am starting to go in the incorrect direction after just completing a lap. So I loose a lap. IT IS THE FIRST TIME I GO IN THE WRONG DIRECTION
+                {
+                    _laps--;
+                    if (_laps < 0) // I reset if my laps are 0 because it means the player can now go into the different time
+                    {
+                        ResetVariables();
+                    }
+                    else
+                    {
+                        _passedOtherBoundary = true;
+                        _goingCorrectDirection = false;
+                    }
+                    if (_verbose) print("0.2) Started going in the wrong direction aftre completing a lap."); // Backwards in selection as a concept, can be either past or future
+                    return;
+                }
+
+                if (!_goingFuture && futureBoundary && !_passedOtherBoundary && _goingCorrectDirection)
+                {
+                    /* _laps--;
+                    if (_laps < 0) 
+                    {
+                        ResetVariables();
+                    }
+                    else
+                    {
+                        _goingCorrectDirection = false;
+                    }*/
+                    if (_verbose) print("**) Something IDK."); 
+                    return;
+                }
+
+                if (_goingFuture && futureBoundary && !_passedOtherBoundary && !_goingCorrectDirection) // ** Continued goping wrong
+                {
+                    _laps--;
+                    if (_laps < 0)
+                    {
+                        ResetVariables();
+                    }
+                    else
+                    {
+                        _passedOtherBoundary = true;
+                    }
+                    if (_verbose) print("0.3) Touched selected boundary without having touched other boundary, so went wrong."); // Forward in selection as a concept, can be either past or future
+                    return;
+                }
+
+                if (_goingFuture && futureBoundary && _passedOtherBoundary && !_goingCorrectDirection) // I am completing my wrong direction lapp
+                {
+                    _laps++;
+                    /*_laps--;
+                    if (_laps < 0)
+                    {
+                        ResetVariables();
+                    }*/
+                    _passedOtherBoundary = false;
+                    if (_verbose) print("0.4) Touched sleected boundary after touching other boundary and going in the wrong direction, so completed a lap and going correct");
+                    return;
+                }
+
+                if(!_goingFuture && futureBoundary && _passedOtherBoundary && !_goingCorrectDirection)
+                {
+                    _passedOtherBoundary = false;
+                    print("0.5) I continue to go on the worng directino and just passed the other boundary");
+                    return;
+                }
+
+                if (!_goingFuture && futureBoundary && !_passedOtherBoundary && !_goingCorrectDirection) // COntinue to go in wring directino (passed other boundary)
+                {
+                    //_passedOtherBoundary = true;
+                    if (_verbose) print("0.6) IDK if this is correct"); // 
+                    return;
+                }
+                break;
+            case false:
+                if (!_goingFuture && !futureBoundary && !_passedOtherBoundary && _goingCorrectDirection) // If I am not going to the future and I touuch the not future boundary after I have not passed the other boundary and I am going into the correct direction then i started going  into the wrong direction, which would be the future
+                {
+                    _laps--;
+                    if (_laps < 0) // I reset if my laps are 0 because it means the player can now go into the different time
+                    {
+                        ResetVariables();
+                    }
+                    else
+                    {
+                        print("tHis?");
+                        _passedOtherBoundary = true; // Reset having pssed through the other boundary cause techncially I have after loosing the lap
+                        _goingCorrectDirection = false;
+                    }
+                    if (_verbose) print("1.0) The other option?");
+                    return;
+                }
+
+                if (_goingFuture && !futureBoundary && !_passedOtherBoundary && _goingCorrectDirection) // If I am touching the other boundary and I am going in the correct direction then I am in the correct path to complete a lap, so I make true my _passedOtherBoundary true so whenever i touch the correct boundary one again, I complete one lap
+                {
+                    _passedOtherBoundary = true;
+                    if (_verbose) print("1.1) Touched other boundary, going in the correct direction."); // SHould not be called when the correct direction is going into the not futyre
+                    return;
+                }
+
+                if (_goingFuture && !futureBoundary && !_passedOtherBoundary && !_goingCorrectDirection)
+                {
+                    _goingCorrectDirection = true;
+                    _passedOtherBoundary = true;
+
+                    if (_verbose) print("1.2) Touched other boundary while going in the wrong direction, so now I go in correct direction.");
+                    return;
+                }
+
+                if (_goingFuture && !futureBoundary && !_passedOtherBoundary && !_goingCorrectDirection) // Started going in the correct direction after going to the [ast
+                {
+                    _goingCorrectDirection = true;
+
+                    if (_verbose) print("1.3) Touched other boundary while going in the wrong direction, so now I go in the correct direction because I am going to the past.");
+                    return;
+                }
+
+                if (_goingFuture && !futureBoundary && _passedOtherBoundary && !_goingCorrectDirection) // If I am touching the other boundary, and I am going NOT in the correct direction 
+                {
+                    _passedOtherBoundary = false;
+                    if (_verbose) print("1.4) Touched past boundary and currently going to the future.");
+                    return;
+                }
+
+                if (!_goingFuture && !futureBoundary && _passedOtherBoundary && !_goingCorrectDirection) /// Now I am going in the ocrrect directino and i completed a lap to the past
+                {
+                    _laps++;
+                    _passedOtherBoundary = false;
+                    _goingCorrectDirection = true;
+
+                    if (_verbose) print("1.5) I am now going correctly to the past.");
+                    return;
+                }
+
+                /* if (!_goingFuture && !futureBoundary && _passedOtherBoundary && !_goingCorrectDirection) // I am going wring in the past so I strated gioing to the future
+                {
+                    _laps--;
+                    if (_laps < 0)
+                    {
+                        ResetVariables();
+                    }
+                    else
+                    {
+                        _passedOtherBoundary = false;
+                    }
+                    
+                    if (_verbose) print("1.5) Went so wrong in the past that I removed a lap");
+                    return;
+                }*/
+
+                if (_goingFuture && !futureBoundary && _passedOtherBoundary && _goingCorrectDirection) // If I touch the other boundary and I passed the otehr boundary before and I was going in the correct direction then I started to go in the wrong direction
+                {
+                    _goingCorrectDirection = false;
+                    if (_verbose) print("1.6) Touched other boundary and STARTED to go wrong.");
+                    return;
+
+                }
+
+                if (!_goingFuture && !futureBoundary && _passedOtherBoundary && _goingCorrectDirection)
+                {
+                    _laps++;
+                    _passedOtherBoundary = false;
+                    if (_verbose) print("1.7) Touched selected boundary while going to the past so completed a lap.");
+                    return;
+
+                }
+                if(!_goingFuture && !futureBoundary && !_passedOtherBoundary && !_goingCorrectDirection) // Started going in the correetc direction again after going in the wrong direction
+                {
+                    _laps--;
+                    if (_laps < 0)
+                    {
+                        ResetVariables();
+                    }
+                    if (_verbose) print("1.8) Continue to go wrong in the past direction, so now I am going to the future");
+                    return;
+                }
+                break;
+        }
         print("Not contemplated");
     }
 
