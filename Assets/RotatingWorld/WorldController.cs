@@ -26,7 +26,6 @@ namespace RotatingWorld
         private void CompletedPuzzle()
         {
             _movement = Vector2.zero;
-            print("Exiting Scene");
         }
 
         public void OnRotate(InputValue value)

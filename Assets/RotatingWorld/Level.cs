@@ -48,9 +48,9 @@ public class Level : MonoBehaviour
 
     private void DeactivateInput()
     {
-        print("Player input: " + _playerInput.inputIsActive);
+        //print("Player input: " + _playerInput.inputIsActive);
         _playerInput.DeactivateInput();
-        print("Type of message: " + _playerInput.inputIsActive);
+        //print("Type of message: " + _playerInput.inputIsActive);
     }
 
     public void OnFire(InputValue input)

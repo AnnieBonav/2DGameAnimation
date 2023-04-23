@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Spine.Unity;
 using UnityEngine.InputSystem;
@@ -8,6 +9,8 @@ namespace RotatingWorld
 {
     public class XolotlController : MonoBehaviour
     {
+        public static event Action ShakeCamera;
+
         [SpineAnimation][SerializeField] private string _idleAnimation;
         [SpineAnimation][SerializeField] private string _runAnimation;
         [SpineAnimation][SerializeField] private string _heavyBreathingAnimation;
@@ -75,7 +78,7 @@ namespace RotatingWorld
 
         public void OnJump(InputValue value)
         {
-           if(_verbose) print("Jumperd");
+           if(_verbose) print("Jumped");
             _rb.AddForce(new Vector2(0, _jumpForce));
         }
 
@@ -108,6 +111,7 @@ namespace RotatingWorld
 
         private void CompletedPuzzle()
         {
+            ShakeCamera.Invoke();
             StartCoroutine(PlayAndWaitForAnimation());
 
         }
@@ -119,7 +123,8 @@ namespace RotatingWorld
             {
                 yield return null;
             }
-            SceneManager.LoadSceneAsync(2);
+            print("Would change scene");
+            //SceneManager.LoadSceneAsync(2);
         }
         /*
         private IEnumerator Ascend()
