@@ -17,6 +17,8 @@ public class Level : MonoBehaviour
     // private bool _selectedBoundary = false;
     private int _laps = 0;
 
+    private PlayerInput _playerInput;
+
 
     private void ResetVariables()
     {
@@ -30,6 +32,8 @@ public class Level : MonoBehaviour
     private void Awake()
     {
         Boundary.OnBoundaryCollision += CheckBoundaries;
+        _playerInput = GetComponent<PlayerInput>();
+        ExitPlate.TouchedExitPlate += DeactivateInput;
     }
 
     private void CheckBoundaries(bool futureBoundary)
@@ -42,9 +46,16 @@ public class Level : MonoBehaviour
         OnLapsChanged.Invoke(_laps); // Not every time they are changed this changes, but I do not care lol
     }
 
+    private void DeactivateInput()
+    {
+        print("Player input: " + _playerInput.inputIsActive);
+        _playerInput.DeactivateInput();
+        print("Type of message: " + _playerInput.inputIsActive);
+    }
+
     public void OnFire(InputValue input)
     {
-       print("\nGoing future: " + _goingFuture + "\nOther bundary has been touched: " + _passedOtherBoundary + "\nLaps: " + _laps + "\nCorrect direction: " + _goingCorrectDirection);
+        print("\nGoing future: " + _goingFuture + "\nOther bundary has been touched: " + _passedOtherBoundary + "\nLaps: " + _laps + "\nCorrect direction: " + _goingCorrectDirection);
     }
 
     private void ChangeLaps(bool futureBoundary)

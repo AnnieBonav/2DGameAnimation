@@ -692,6 +692,7 @@ GameObject:
   - component: {fileID: 554907821}
   - component: {fileID: 554907820}
   - component: {fileID: 554907825}
+  - component: {fileID: 554907826}
   m_Layer: 0
   m_Name: Xolotl
   m_TagString: Untagged
@@ -889,6 +890,22 @@ MonoBehaviour:
   _jumpForce: 200
   _verbose: 0
   _animationsVerbose: 0
+--- !u!111 &554907826
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554907817}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 47d8c316760b0f541ab94504abd3943d, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 47d8c316760b0f541ab94504abd3943d, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &558130339
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,7 +989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verbose: 0
-  _lapsToWin: 1
+  _lapsToWin: 0
 --- !u!1 &671040514
 GameObject:
   m_ObjectHideFlags: 0

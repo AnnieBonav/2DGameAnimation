@@ -2,6 +2,7 @@ using System.Collections;
 using Spine.Unity;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace RotatingWorld
 {
@@ -27,9 +28,15 @@ namespace RotatingWorld
         private bool _facingRight = false;
         private float _direction;
 
+        private bool animate = false;
+        private int turns = 5;
+        private Animation _animation;
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _animation = GetComponent<Animation>();
+            ExitPlate.TouchedExitPlate += CompletedPuzzle;
         }
 
         private void ChangeState(PlayerState newState)
@@ -64,10 +71,6 @@ namespace RotatingWorld
 
         private void FixedUpdate()
         {
-            /* if (_movement.x == 0)
-            {
-                ChangeState(PlayerState.Idle);
-            }*/
         }
 
         public void OnJump(InputValue value)
@@ -76,14 +79,8 @@ namespace RotatingWorld
             _rb.AddForce(new Vector2(0, _jumpForce));
         }
 
-        public void OnFire(InputValue value)
-        {
-            // Debug.Log("Called Fire");
-        }
-
         public void OnRotate(InputValue value)
         {
-            if (_verbose) print("Moved");
             Vector2 inputVector = value.Get<Vector2>();
             _movement = new Vector2(inputVector.x, 0f);
             _direction = _movement.x;
@@ -108,6 +105,33 @@ namespace RotatingWorld
                 transform.Rotate(0, 180f, 0);
             }
         }
+
+        private void CompletedPuzzle()
+        {
+            StartCoroutine(PlayAndWaitForAnimation());
+
+        }
+
+        private IEnumerator PlayAndWaitForAnimation()
+        {
+            _animation.Play();
+            while (_animation.isPlaying)
+            {
+                yield return null;
+            }
+            SceneManager.LoadSceneAsync(2);
+        }
+        /*
+        private IEnumerator Ascend()
+        {
+            while(turns > 0)
+            {
+                _rb.AddForce(new Vector2(0, 1));
+                turns--;
+                yield return new WaitForSeconds(1f);
+            }
+
+        }*/
     }
 }
 
