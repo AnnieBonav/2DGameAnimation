@@ -1,23 +1,21 @@
 .menu-selector {
-    font-size: 20px;
+    -unity-font: initial;
+    background-color: rgb(217, 217, 217);
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    -unity-font: url('project://database/Assets/UI/Hando-Bold.otf?fileID=12800000&guid=2a9a52f15787e5a44b41f9c43d707ac9&type=3#Hando-Bold');
-    -unity-font-definition: ;
-    background-color: rgb(255, 255, 255);
-    -unity-background-image-tint-color: rgba(255, 255, 255, 255);
-    color: rgb(24, 0, 0);
-    margin-bottom: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
-    flex-grow: 0;
+    -unity-font-definition: url('project://database/Assets/UI/Hando-Regular%20SDF%201.asset?fileID=11400000&guid=a748193464322a54a9c027f827108c8a&type=2#Hando-Regular SDF 1');
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .menu-selector:hover {
     scale: 1.1 1.1;
-    background-color: rgba(255, 255, 255, 255);
 }
 
 .menu-selector:focus {
