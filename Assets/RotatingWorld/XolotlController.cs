@@ -124,7 +124,7 @@ namespace RotatingWorld
                 yield return null;
             }
             print("Would change scene");
-            //SceneManager.LoadSceneAsync(2);
+            SceneManager.LoadScene(2);
         }
         /*
         private IEnumerator Ascend()
