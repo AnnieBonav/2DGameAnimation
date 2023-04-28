@@ -34,6 +34,15 @@ As of the 18th of april:
 The current state is still prototyping. ETA for a minimum playable game: May 4th!
 
 
+### Notes
+## Input System
+```c#
+print("Type of message before: " + _playerInput.notificationBehavior);
+_playerInput.notificationBehavior = PlayerNotifications.SendMessages;
+print("Type of message after: " + _playerInput.notificationBehavior);
+```
+
+
 
 
 
