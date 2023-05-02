@@ -33,6 +33,11 @@ public class UIHandling : MonoBehaviour
         print("Opened options");
     }
 
+    public void OnClick(InputValue value)
+    {
+        print("Clicked");
+    }
+
     private void OpenCredits()
     {
         print("Opened credits");

@@ -348,8 +348,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f5c6cf77c769a409a3da37519b8d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pointACoordinates: {fileID: 0}
+  _pointBCoordinates: {fileID: 0}
   _speed: 10
   _jumpForce: 200
+  _verbose: 0
 --- !u!1 &759616595
 GameObject:
   m_ObjectHideFlags: 0
@@ -5939,7 +5942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1024308164
 MonoBehaviour:
   m_ObjectHideFlags: 0
