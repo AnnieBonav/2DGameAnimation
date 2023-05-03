@@ -1,4 +1,4 @@
-Shader "Unlit/Grass"
+Shader "Unlit/WorkingMovingGrass"
 {
     Properties
     {
@@ -35,15 +35,12 @@ Shader "Unlit/Grass"
                 {
                     float4 vertex : POSITION;
                     float2 uv : TEXCOORD0;
-                    float3 worldPos : TEXCOORD1;
                 };
 
                 struct Interpolators
                 {
                     float2 uv : TEXCOORD0;
                     float4 vertex : SV_POSITION;
-                    float3 worldPos : TEXCOORD3;
-
                 };
 
                 Interpolators vert(MeshData v)
@@ -54,11 +51,7 @@ Shader "Unlit/Grass"
 
                     float modifier = v.vertex.y - _Offset;
                     float3 modification = float3(0, 0, 0);
-
-                    o.worldPos = mul(UNITY_MATRIX_M, v.vertex);
-                    _Skew.x = (_Skew.x + cos(_Time.z) + o.worldPos) * 0.1;// Moving with time
-                    
-                    //_Skew.x += cos(180);
+                    _Skew.x += cos(_Time.z) * 0.1;
                     modification += _Skew.xyx * modifier;
 
                     v.vertex.xyz += modification;
@@ -84,5 +77,5 @@ Shader "Unlit/Grass"
                 }
             ENDCG
         }
-    }
+        }
 }
