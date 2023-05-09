@@ -21,7 +21,7 @@ public class ExitPlate : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        TouchedExitPlate.Invoke();
+        TouchedExitPlate?.Invoke();
         //print("You completed the puzzle!");
         //SceneManager.LoadScene(2);
     }
