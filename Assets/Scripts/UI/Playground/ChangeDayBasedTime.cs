@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeDay : MonoBehaviour
+public class ChangeDayBasedTime : MonoBehaviour
 {
     [SerializeField] MeshRenderer _meshRenderer;
     private Material _horizonMaterial;
@@ -17,7 +17,7 @@ public class ChangeDay : MonoBehaviour
     private void FixedUpdate()
     {
         // _scale -= Time.deltaTime * 0.00001f; // Nope
-        _scale = _scale - 0.001f;
+        _scale = _scale - 0.0001f;
         _horizonMaterial.SetFloat("_Offset", _scale);
         if (_scale < -5f)
         {

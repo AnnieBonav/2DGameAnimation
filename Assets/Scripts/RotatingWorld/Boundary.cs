@@ -3,11 +3,17 @@ using UnityEngine;
 
 public class Boundary : MonoBehaviour
 {
-    public static event Action<bool> OnBoundaryCollision;
-    [SerializeField] private bool _futureBoundary;
+    public static event Action<Direction> OnBoundaryCollision;
+    [SerializeField] private Tense _tense;
+    private Direction _direction;
+
+    private void Awake()
+    {
+        _direction = new Direction(_tense);
+    }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        OnBoundaryCollision?.Invoke(_futureBoundary);
+        OnBoundaryCollision?.Invoke(_direction);
     }
 }

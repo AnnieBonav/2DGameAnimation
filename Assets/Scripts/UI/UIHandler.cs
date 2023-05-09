@@ -12,8 +12,8 @@ public class UIHandler : MonoBehaviour
         Level.OnLapsChanged += ChangeLapsText;
     }
 
-    private void ChangeLapsText(int newLaps)
+    private void ChangeLapsText(int newLaps, string theTime)
     {
-        _lapsText.text = newLaps.ToString();
+        _lapsText.text = newLaps.ToString() + "  " +  theTime;
     }
 }
