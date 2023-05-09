@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -46,9 +47,7 @@ public class Level : MonoBehaviour
 
     [SerializeField] private bool _verbose = true;
     [SerializeField] private int _lapsToWin = 3;
-
     [SerializeField] private Transform _worldTransform;
-
     [SerializeField] private ChangeDay _changeDay;
 
     private bool _goingCorrectDirection = true; // Correct direction is the direction we started (after has direction)
@@ -56,8 +55,9 @@ public class Level : MonoBehaviour
     private int _laps = -1; // undefined number of laps, the user has not chosen a direction
 
     private PlayerInput _playerInput;
-
     private Direction _currentDirection;
+
+    private float _lastWorldAngle;
 
     private void ResetVariables()
     {
@@ -74,13 +74,7 @@ public class Level : MonoBehaviour
         _playerInput = GetComponent<PlayerInput>();
         ExitPlate.TouchedExitPlate += DeactivateInput;
         ResetVariables();
-    }
-
-    private void FixedUpdate()
-    {
-        float worldAngle = _worldTransform.rotation.eulerAngles.z;
-        // print("Rotation: " + worldAngle);
-        _changeDay.UpdateAngle(worldAngle);
+        _lastWorldAngle = _worldTransform.rotation.eulerAngles.z;
     }
 
     private void Start()
