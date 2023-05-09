@@ -9,10 +9,16 @@ EditorBuildSettings:
     path: Assets/Scenes/GameScenes/MenuScreen.unity
     guid: 35caf90496e26844a8ad1b9414a7a6bd
   - enabled: 1
-    path: Assets/Scenes/GameScenes/WorldRotates.unity
+    path: Assets/Scenes/GameScenes/InGame.unity
     guid: ec70c4ea8dabacd42b837c4b4a5008af
   - enabled: 1
-    path: Assets/Scenes/GameScenes/FinishedGame.unity
-    guid: 934b6abe709a4b540a86c460fe523234
+    path: Assets/Scenes/GameScenes/Options.unity
+    guid: 7ac3760cd2d416d47815f3d24ae5294b
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/Credits.unity
+    guid: 66a015928ffe95942a6d5162256597aa
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/Scene404.unity
+    guid: e8d38ba140b4cd04bbfe241b5a845402
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 7911d180a1e43fa4e8771f5e45e23184, type: 2}
