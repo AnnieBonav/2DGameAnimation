@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class UIHandler : MonoBehaviour
 {
-    private TextMeshProUGUI _lapsText;
+    [SerializeField] private TextMeshProUGUI _lapsText;
+
     private void Awake()
     {
         Level.OnLapsChanged += ChangeLapsText;
-        _lapsText = GetComponent<TextMeshProUGUI>();
     }
 
     private void ChangeLapsText(int newLaps)

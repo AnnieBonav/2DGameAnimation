@@ -81,7 +81,6 @@ namespace RotatingWorld
            if(_verbose) print("Jumped");
             _rb.AddForce(new Vector2(0, _jumpForce));
         }
-
         public void OnRotate(InputValue value)
         {
             Vector2 inputVector = value.Get<Vector2>();
@@ -99,7 +98,6 @@ namespace RotatingWorld
                 ChangeState(PlayerState.Idle);
             }
         }
-
         private void CheckFlip()
         {
             if (_facingRight && _direction < 0f || !_facingRight && _direction > 0f)
@@ -108,14 +106,12 @@ namespace RotatingWorld
                 transform.Rotate(0, 180f, 0);
             }
         }
-
         private void CompletedPuzzle()
         {
             ShakeCamera.Invoke();
             StartCoroutine(PlayAndWaitForAnimation());
 
         }
-
         private IEnumerator PlayAndWaitForAnimation()
         {
             _animation.Play();

@@ -10,15 +10,13 @@ public class Level : MonoBehaviour
     [SerializeField] bool _verbose = true;
     [SerializeField] int _lapsToWin = 3;
 
-    private bool _hasDirection = false;
-    private bool _goingFuture = false;
-    private bool _goingCorrectDirection = true; // Correct direction is the direction we started going in
-    private bool _passedOtherBoundary = false;
-    // private bool _selectedBoundary = false;
-    private int _laps = 0;
+    private bool _hasDirection = false; // which direction the player decided to go
+    private bool _goingFuture = false; // if the direction is future or past
+    private bool _goingCorrectDirection = true; // Correct direction is the direction we started (after has direction)
+    private bool _passedOtherBoundary = false; // If they have passed the other boundary they needed to
+    private int _laps = -1; // undefined number of laps, the user has not chosen a direction
 
     private PlayerInput _playerInput;
-
 
     private void ResetVariables()
     {
@@ -34,6 +32,13 @@ public class Level : MonoBehaviour
         Boundary.OnBoundaryCollision += CheckBoundaries;
         _playerInput = GetComponent<PlayerInput>();
         ExitPlate.TouchedExitPlate += DeactivateInput;
+        ResetVariables();
+    }
+
+    private void Start()
+    {
+        OnLapsChanged?.Invoke(_laps);
+        // Change to -1 so I can test from the beginningh
     }
 
     private void CheckBoundaries(bool futureBoundary)
@@ -41,9 +46,9 @@ public class Level : MonoBehaviour
         ChangeLaps(futureBoundary);
         if(_laps >= _lapsToWin)
         {
-            CompletedPuzzle.Invoke();
+            CompletedPuzzle?.Invoke();
         }
-        OnLapsChanged.Invoke(_laps); // Not every time they are changed this changes, but I do not care lol
+        OnLapsChanged?.Invoke(_laps); // Not every time they are changed this changes, but I do not care lol
     }
 
     private void DeactivateInput()
