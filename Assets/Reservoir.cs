@@ -27,7 +27,7 @@ public class Reservoir : MonoBehaviour
         {
             if(_currentReservoire <= _maxReservoire)
             {
-                _currentReservoire += 1;
+                _currentReservoire += 0.2f;
             }
             yield return new WaitForSeconds(3);
         }
@@ -36,7 +36,6 @@ public class Reservoir : MonoBehaviour
     private void AddDamage(float damage)
     {
         _currentReservoire -= damage;
-        print("Took " + damage + " Now has: " + _currentReservoire);
         if( _currentReservoire < 0)
         {
             print("LIKE, DIED");

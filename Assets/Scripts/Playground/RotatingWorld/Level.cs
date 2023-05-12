@@ -3,6 +3,7 @@ using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 // TODO: Implement changing time of day based on where they are going and not left or right
 public enum Tense { Past, Present, Future };

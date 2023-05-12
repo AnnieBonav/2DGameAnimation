@@ -11,19 +11,20 @@ using static UnityEngine.GraphicsBuffer;
 [RequireComponent(typeof(MeshCollider))]
 public class ProjectileLauncher : MonoBehaviour
 {
-    [SerializeField] private Camera _camera;
-    [SerializeField] private Transform _originTransform;
     [SerializeField] private int _projectilesAmount;
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private float _secondsBetweenProjectiles = 5f;
+    [SerializeField] private Transform _targetTransform;
+    [SerializeField] private float _xLeftMargin = -20;
+    [SerializeField] private float _yLeftMargin = 15;
 
-    private Vector2 _ejectionOrigin; // Ejected origin is only calculated once. I could create a line that it follows and then update the ejection origin so the logic of the ejection origin is separated from the logic of ejecting
+    private Vector2 _ejectionOrigin;
     private ObjectPool<Projectile> _projectilePool;
 
     private void Awake()
     {
         _projectilePool = new ObjectPool<Projectile>(_projectilesAmount, _projectilePrefab);
-        _ejectionOrigin = _originTransform.position;
+        _ejectionOrigin = transform.position;
     }
 
 
@@ -44,10 +45,22 @@ public class ProjectileLauncher : MonoBehaviour
     public void InstantiateProjectile()
     {
         Projectile projectile = _projectilePool.GetPooledObject();
-        Vector2 randomDirection = UnityEngine.Random.insideUnitCircle;
+        // Vector2 randomDirection = UnityEngine.Random.insideUnitCircle;
         if (projectile != null)
         {
-            projectile.Activate(_ejectionOrigin, randomDirection);
+            // projectile.gameObject.SetActive(true);
+            projectile.Activate(_ejectionOrigin, _targetTransform);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        MoveLauncher();
+    }
+
+    private void MoveLauncher()
+    {
+        float randomX = UnityEngine.Random.Range(_xLeftMargin, _yLeftMargin);
+        _ejectionOrigin = new Vector2(randomX, transform.position.y);
     }
 }

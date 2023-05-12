@@ -9,29 +9,19 @@ using UnityEngine.UIElements;
 public class Projectile : MonoBehaviour
 {
     public static event Action<float> HitPlayer;
-    private Rigidbody2D _rb;
-    private Vector2 _direction;
-    [SerializeField] private float _thrust = 2f;
-    [SerializeField] private Transform _target;
     [SerializeField] private float _damage = 5;
+    private float _thrust = 10;
 
-    public void SetDirection(Vector2 direction)
-    {
-        _direction = direction;
-    }
-
-    public void Awake()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-    }
-
-    public void Activate(Vector2 ejectOrigin, Vector2 direction)
+    private Vector2 _destination;
+    public void Activate(Vector2 ejectOrigin, Transform target)
     {
         gameObject.SetActive(true);
         transform.position = ejectOrigin;
-        float degrees = Vector2.SignedAngle(new Vector2(1,0), direction);
-        transform.rotation = Quaternion.Euler(0, 0, degrees);
-        _direction = direction;
+        _destination = target.position;
+
+        float randomX = UnityEngine.Random.Range(-10, 10);
+        _destination.x = randomX;
+        _destination.y -= 20;
     }
 
     public void Deactivate()
@@ -42,21 +32,22 @@ public class Projectile : MonoBehaviour
     private void FixedUpdate()
     {
         HandleMove();
-        //HandleRotation();
+        HandleRotation();
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    /*private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.name is "Boundary")
         {
             Deactivate();
         }
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Player")) {
             HandleHitPlayer();
+            Deactivate();
         }else if (collider.CompareTag("World"))
         {
             Deactivate();
@@ -70,12 +61,11 @@ public class Projectile : MonoBehaviour
 
     public void HandleMove()
     {
-        //_rb.AddForce(_direction * _thrust);
-        transform.position = Vector2.MoveTowards(transform.position, _target.position, _thrust);
+        transform.position = Vector2.MoveTowards(transform.position, _destination, Time.deltaTime * _thrust);
     }
 
     public void HandleRotation()
     {
-        transform.up = _target.position - transform.position;
+        transform.up = _destination - (Vector2)transform.position;
     }
 }

@@ -24,7 +24,7 @@ public class AztechButton : MonoBehaviour
     private IEnumerator HandleChangeScene()
     {
         _crossfade.SetTrigger("Start");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(_nextScene);
         print("Trying to change scene to: " + _nextScene);
     }

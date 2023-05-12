@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Clouds : MonoBehaviour
 {
-    [SerializeField] float _movingSpeed = 0.1f;
     [SerializeField] float _travelHorizontal = 20;
     Transform _startTransform;
 
@@ -22,10 +21,11 @@ public class Clouds : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        /*transform.position = new Vector2(transform.position.y, transform.position.x + _movingSpeed);
-        if(transform.position.x >= _travelHorizontal)
+        //transform.position = new Vector2(transform.position.y, transform.position.x + _movingSpeed);
+        if(transform.position.x >= -5)
         {
+            print("Happened");
             transform.position = _startTransform.position;
-        }*/
+        }
     }
 }

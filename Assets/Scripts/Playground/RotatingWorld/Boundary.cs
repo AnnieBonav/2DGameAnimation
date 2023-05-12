@@ -14,6 +14,11 @@ public class Boundary : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        OnBoundaryCollision?.Invoke(_direction);
+        if (collision.CompareTag("Player"))
+        {
+            print("collided player");
+
+            OnBoundaryCollision?.Invoke(_direction);
+        }
     }
 }

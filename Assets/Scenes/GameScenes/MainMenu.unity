@@ -449,7 +449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1437,6 +1437,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2114625824570991936, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
+      propertyPath: _crossfade
+      value: 
+      objectReference: {fileID: 189888144}
+    - target: {fileID: 2114625824570991936, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
       propertyPath: _nextScene
       value: Credits
       objectReference: {fileID: 0}
@@ -1746,6 +1750,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2114625824570991936, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
+      propertyPath: _crossfade
+      value: 
+      objectReference: {fileID: 189888144}
     - target: {fileID: 2114625824570991936, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
       propertyPath: _nextScene
       value: Options

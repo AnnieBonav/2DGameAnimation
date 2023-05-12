@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Calendar
+  - World
   layers:
   - Default
   - TransparentFX
