@@ -1,0 +1,10 @@
+CalendarRig.png
+size:2010,2010
+filter:Linear,Linear
+pma:true
+Center
+bounds:2,1006,1002,1002
+Middle
+bounds:2,2,1002,1002
+Outside
+bounds:1006,1006,1002,1002
