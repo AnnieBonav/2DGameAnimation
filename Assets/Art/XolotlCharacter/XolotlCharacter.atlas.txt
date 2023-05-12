@@ -1,0 +1,186 @@
+XolotlCharacter.png
+	size: 2410, 2889
+	filter: Linear, Linear
+	pma: true
+Blindfold
+	bounds: 2, 1206, 1202, 1681
+BlindfoldBase
+	bounds: 1206, 1206, 1202, 1681
+BlindfoldTxt
+	bounds: 2, 2, 1202, 1681
+	rotate: 90
+
+XolotlCharacter_2.png
+	size: 2410, 2889
+	filter: Linear, Linear
+	pma: true
+Head
+	bounds: 2, 1206, 1202, 1681
+HornBot
+	bounds: 1206, 1206, 1202, 1681
+HornBotBack
+	bounds: 1206, 1206, 1202, 1681
+HornBotBlindfoldBase
+	bounds: 2, 2, 1202, 1681
+	rotate: 90
+
+XolotlCharacter_3.png
+	size: 2410, 2889
+	filter: Linear, Linear
+	pma: true
+HornBotBlindfoldTxt
+	bounds: 2, 1206, 1202, 1681
+HornMid
+	bounds: 1206, 1206, 1202, 1681
+HornMidBack
+	bounds: 1206, 1206, 1202, 1681
+HornMidBlindfoldBase
+	bounds: 2, 2, 1202, 1681
+	rotate: 90
+
+XolotlCharacter_4.png
+	size: 2410, 2889
+	filter: Linear, Linear
+	pma: true
+HornMidBlindfoldTxt
+	bounds: 2, 1206, 1202, 1681
+HornTop
+	bounds: 1206, 1206, 1202, 1681
+HornTopBack
+	bounds: 1206, 1206, 1202, 1681
+L_Elbow
+	bounds: 2, 2, 1202, 1681
+	rotate: 90
+
+XolotlCharacter_5.png
+	size: 2410, 2889
+	filter: Linear, Linear
+	pma: true
+L_Foot
+	bounds: 2, 1206, 1202, 1681
+L_Hand1
+	bounds: 1206, 1206, 1202, 1681
+L_Hand2
+	bounds: 2, 2, 1202, 1681
+	rotate: 90
+
+XolotlCharacter_6.png
+	size: 2410, 2889
+	filter: Linear, Linear
+	pma: true
+L_Hand3
+	bounds: 2, 1206, 1202, 1681
+L_Hand4
+	bounds: 1206, 1206, 1202, 1681
+L_Hand5
+	bounds: 2, 2, 1202, 1681
+	rotate: 90
+
+XolotlCharacter_7.png
+	size: 2410, 2889
+	filter: Linear, Linear
+	pma: true
+L_Hand6
+	bounds: 2, 1206, 1202, 1681
+L_Knee
+	bounds: 1206, 1206, 1202, 1681
+L_LowerArm
+	bounds: 2, 2, 1202, 1681
+	rotate: 90
+
+XolotlCharacter_8.png
+	size: 2410, 2889
+	filter: Linear, Linear
+	pma: true
+L_LowerLeg
+	bounds: 2, 1206, 1202, 1681
+L_Quad
+	bounds: 1206, 1206, 1202, 1681
+L_Shoulder
+	bounds: 2, 2, 1202, 1681
+	rotate: 90
+
+XolotlCharacter_9.png
+	size: 2410, 2889
+	filter: Linear, Linear
+	pma: true
+L_UpperArm
+	bounds: 2, 1206, 1202, 1681
+L_Wrist
+	bounds: 1206, 1206, 1202, 1681
+L_WristArmour
+	bounds: 2, 2, 1202, 1681
+	rotate: 90
+
+XolotlCharacter_10.png
+	size: 2410, 2889
+	filter: Linear, Linear
+	pma: true
+Neck
+	bounds: 2, 1206, 1202, 1681
+R_Elbow
+	bounds: 1206, 1206, 1202, 1681
+R_Foot
+	bounds: 2, 2, 1202, 1681
+	rotate: 90
+
+XolotlCharacter_11.png
+	size: 2410, 2889
+	filter: Linear, Linear
+	pma: true
+R_Hand1
+	bounds: 2, 1206, 1202, 1681
+R_Knee
+	bounds: 1206, 1206, 1202, 1681
+R_LowerArm
+	bounds: 2, 2, 1202, 1681
+	rotate: 90
+
+XolotlCharacter_12.png
+	size: 2410, 2889
+	filter: Linear, Linear
+	pma: true
+R_LowerLeg
+	bounds: 2, 1206, 1202, 1681
+R_LowerLegBaseTxt
+	bounds: 1206, 1206, 1202, 1681
+R_LowerLegTattooBase
+	bounds: 2, 2, 1202, 1681
+	rotate: 90
+
+XolotlCharacter_13.png
+	size: 2410, 2889
+	filter: Linear, Linear
+	pma: true
+R_LowerLegTattooTxt
+	bounds: 2, 1206, 1202, 1681
+R_Quad
+	bounds: 1206, 1206, 1202, 1681
+R_Shoulder
+	bounds: 2, 2, 1202, 1681
+	rotate: 90
+
+XolotlCharacter_14.png
+	size: 2410, 2889
+	filter: Linear, Linear
+	pma: true
+R_UpperArm
+	bounds: 2, 1206, 1202, 1681
+R_Wrist
+	bounds: 1206, 1206, 1202, 1681
+R_WristArmour
+	bounds: 2, 2, 1202, 1681
+	rotate: 90
+
+XolotlCharacter_15.png
+	size: 2889, 2410
+	filter: Linear, Linear
+	pma: true
+Tail
+	bounds: 2, 1206, 1202, 1681
+	rotate: 90
+TailArmourRed
+	bounds: 1685, 727, 1202, 1681
+Torso
+	bounds: 2, 2, 1202, 1681
+	rotate: 90

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
+  m_Name: XolotlCharacter_Atlas
+  m_EditorClassIdentifier: 
+  atlasFile: {fileID: 4900000, guid: 7c54f6052669ed940b5751dd0c1035bf, type: 3}
+  materials:
+  - {fileID: 2100000, guid: c79d6b9dd0097ed48b96c81cb56decee, type: 2}
+  - {fileID: 2100000, guid: 2775aa87cfd127d498a10bdccce65c5e, type: 2}
+  - {fileID: 2100000, guid: 8be7ffb3f66c68b48a43f788ccc4f394, type: 2}
+  - {fileID: 2100000, guid: 2ea0694c3ad737e47942883f8104fbef, type: 2}
+  - {fileID: 2100000, guid: f288238aebdde0746a7a785cf581a184, type: 2}
+  - {fileID: 2100000, guid: cd404f4c600868f4abf113d8922d63a6, type: 2}
+  - {fileID: 2100000, guid: 6db7162b9d0d9ed45a66e7c39a16d770, type: 2}
+  - {fileID: 2100000, guid: e1ed403b3b660014caeb205bbf715588, type: 2}
+  - {fileID: 2100000, guid: ddd11542f9af5714e95cb7a79526515b, type: 2}
+  - {fileID: 2100000, guid: 13d3950b179ac3f41b8033d87fae2dd8, type: 2}
+  - {fileID: 2100000, guid: 9fd07af97ea4dbd43935a925390595b4, type: 2}
+  - {fileID: 2100000, guid: 327fb5c0ff6128544aa85f6df5596e85, type: 2}
+  - {fileID: 2100000, guid: 57222e137f0785047a2afa95c59d4e6c, type: 2}
+  - {fileID: 2100000, guid: dadd529761702bb4c8e09e3fc61dcd75, type: 2}
+  - {fileID: 2100000, guid: 86bcdb25f5710db43a7b35097124e7a6, type: 2}
