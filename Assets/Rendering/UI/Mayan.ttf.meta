@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 3e6e3f978f05aaa4d9d8ce6ac37a30cf
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Mayan
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 52616725075da4845a967807561d5219, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
