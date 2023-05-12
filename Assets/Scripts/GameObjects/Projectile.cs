@@ -8,10 +8,12 @@ using UnityEngine.UIElements;
 
 public class Projectile : MonoBehaviour
 {
+    public static event Action<float> HitPlayer;
     private Rigidbody2D _rb;
     private Vector2 _direction;
     [SerializeField] private float _thrust = 2f;
     [SerializeField] private Transform _target;
+    [SerializeField] private float _damage = 5;
 
     public void SetDirection(Vector2 direction)
     {
@@ -49,6 +51,21 @@ public class Projectile : MonoBehaviour
         {
             Deactivate();
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Player")) {
+            HandleHitPlayer();
+        }else if (collider.CompareTag("World"))
+        {
+            Deactivate();
+        }
+    }
+
+    private void HandleHitPlayer()
+    {
+        HitPlayer?.Invoke(_damage);
     }
 
     public void HandleMove()

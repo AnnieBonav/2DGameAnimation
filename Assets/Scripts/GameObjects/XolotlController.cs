@@ -124,22 +124,9 @@ namespace RotatingWorld
             if(trackEntry.ToString() == "Main/Levitate")
             {
                 print("Finished levitate");
-                SceneManager.LoadScene("MenuScreen");
+                SceneManager.LoadScene("MainMenu");
             }
         }
-        
-
-        /*
-        private IEnumerator Ascend()
-        {
-            while(turns > 0)
-            {
-                _rb.AddForce(new Vector2(0, 1));
-                turns--;
-                yield return new WaitForSeconds(1f);
-            }
-
-        }*/
     }
 }
 

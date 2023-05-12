@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class AztechButton : MonoBehaviour
 {
     [SerializeField] private string _nextScene;
-
+    [SerializeField] private Animator _crossfade;
     private void Awake()
     {
         if(_nextScene == "")
@@ -18,6 +18,13 @@ public class AztechButton : MonoBehaviour
     }
     public void ChangeScene()
     {
+        StartCoroutine(HandleChangeScene());
+    }
+
+    private IEnumerator HandleChangeScene()
+    {
+        _crossfade.SetTrigger("Start");
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(_nextScene);
         print("Trying to change scene to: " + _nextScene);
     }
