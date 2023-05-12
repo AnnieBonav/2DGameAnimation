@@ -40,13 +40,11 @@ public class CalendarHandler : MonoBehaviour
 
     public void IncreaseSpeed()
     {
-        print("I was pointed");
         if( _animationRunning ) _calendarSkeletonAnimation.timeScale = 2 * _animationTimeScale;
     }
 
     public void DecreaseSpeed()
     {
-        print("I was unpointed");
         if(_animationRunning) _calendarSkeletonAnimation.timeScale = _animationTimeScale; // Do not change if animaiton is paused
     }
 
