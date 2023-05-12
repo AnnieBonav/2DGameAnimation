@@ -1422,7 +1422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 50450553677839212, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -243
+      value: -118
       objectReference: {fileID: 0}
     - target: {fileID: 50450553677839212, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1451,7 +1451,7 @@ PrefabInstance:
     - target: {fileID: 2192789390062732078, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 1910614643}
+      objectReference: {fileID: 1164086388}
     - target: {fileID: 2192789390062732078, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
@@ -1772,6 +1772,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Options
       objectReference: {fileID: 0}
+    - target: {fileID: 4924655119980991726, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8386040911590272005, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1902,7 +1906,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -468, y: -243}
+  m_AnchoredPosition: {x: -468, y: -118}
   m_SizeDelta: {x: 680, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1696509905
@@ -1948,17 +1952,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 50450553677839212, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
   m_PrefabInstance: {fileID: 1396597289}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1910614643 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2192789390062732078, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
-  m_PrefabInstance: {fileID: 1396597289}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1920472583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1976,7 +1969,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1920472584
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2035,6 +2028,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920472583}
   m_CullTransparentMesh: 1
+--- !u!114 &1938332471 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2192789390062732078, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
+  m_PrefabInstance: {fileID: 1104125553}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2022288692
 GameObject:
   m_ObjectHideFlags: 0
@@ -2098,7 +2102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50be2b43412fa7f41bf9f901dae67570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movingSpeed: 0.1
   _travelHorizontal: 20
 --- !u!4 &2080168660
 Transform:
@@ -2331,6 +2334,18 @@ PrefabInstance:
       propertyPath: _nextScene
       value: InGame
       objectReference: {fileID: 0}
+    - target: {fileID: 2192789390062732078, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2192789390062732078, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 1938332471}
+    - target: {fileID: 2192789390062732078, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1938332471}
     - target: {fileID: 4924655119980991726, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
       propertyPath: m_Name
       value: StartAdventure

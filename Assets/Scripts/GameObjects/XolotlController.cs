@@ -27,7 +27,7 @@ namespace RotatingWorld
         private Rigidbody2D _rb;
         private Vector2 _movement;
 
-        public enum PlayerState { Idle, Walking, Running, HeavyBreathing, Jumping, Levitating };
+        public enum PlayerState { Idle, Walking, Running, HeavyBreathing, Jumping, Levitating, Dead };
         private PlayerState _playerState = PlayerState.Idle;
 
         private bool _facingRight = false;
@@ -40,6 +40,7 @@ namespace RotatingWorld
         {
             _rb = GetComponent<Rigidbody2D>();
             ExitPlate.TouchedExitPlate += CompletedPuzzle;
+            Reservoir.PlayerDied += DidNotCompletePuzzle;
         }
 
         private void Start()
@@ -119,12 +120,20 @@ namespace RotatingWorld
             ChangeState(PlayerState.Levitating);
         }
 
+        private void DidNotCompletePuzzle()
+        {
+            ShakeCamera.Invoke();
+            ChangeState(PlayerState.Dead);
+            SceneManager.LoadScene("GameOver");
+            print("Game over");
+        }
+
         private void OnSpineAnimationCompleted(Spine.TrackEntry trackEntry)
         {
             if(trackEntry.ToString() == "Main/Levitate")
             {
                 print("Finished levitate");
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("Won");
             }
         }
     }

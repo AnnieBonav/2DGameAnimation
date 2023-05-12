@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine.UI;
 
 public class Reservoir : MonoBehaviour
 {
+    public static event Action PlayerDied;
     [SerializeField] private int _maxReservoire;
     [SerializeField] private Image _reservoirImage;
     private float _currentReservoire;
@@ -38,7 +40,7 @@ public class Reservoir : MonoBehaviour
         _currentReservoire -= damage;
         if( _currentReservoire < 0)
         {
-            print("LIKE, DIED");
+            PlayerDied?.Invoke();
         }
     }
 

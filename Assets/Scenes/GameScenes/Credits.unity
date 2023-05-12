@@ -826,7 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1135620229}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &651095964
@@ -979,7 +979,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50be2b43412fa7f41bf9f901dae67570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movingSpeed: 0.1
   _travelHorizontal: 20
 --- !u!4 &715590650
 Transform:
@@ -1812,7 +1811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4924655119980991726, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
       propertyPath: m_Name
-      value: Credits
+      value: MainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 8386040911590272005, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
       propertyPath: m_IsActive
@@ -1820,6 +1819,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
+--- !u!1 &1135620229 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4924655119980991726, guid: 071607ad96ebd144a8061c8941fdc627, type: 3}
+  m_PrefabInstance: {fileID: 1135620228}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1254428842
 GameObject:
   m_ObjectHideFlags: 0
