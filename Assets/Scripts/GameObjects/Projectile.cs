@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Projectile : MonoBehaviour
 {
     private Rigidbody2D _rb;
     private Vector2 _direction;
     [SerializeField] private float _thrust = 2f;
+    [SerializeField] private Transform _target;
 
     public void SetDirection(Vector2 direction)
     {
@@ -37,7 +39,8 @@ public class Projectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        HandleMove();
+        //HandleRotation();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -48,8 +51,14 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public void Move()
+    public void HandleMove()
     {
-        _rb.AddForce(_direction * _thrust);
+        //_rb.AddForce(_direction * _thrust);
+        transform.position = Vector2.MoveTowards(transform.position, _target.position, _thrust);
+    }
+
+    public void HandleRotation()
+    {
+        transform.up = _target.position - transform.position;
     }
 }

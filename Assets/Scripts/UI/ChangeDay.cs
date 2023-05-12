@@ -36,7 +36,6 @@ public class ChangeDay : MonoBehaviour
     {
 
         _scale = ConvertFrom_Range1_Input_To_Range2_Output(-720, 720, -0.5f, 6, _angle);
-        print("Scale: " +  _scale);
         _horizonMaterial.SetFloat("_Offset", _scale);
         /*if (_scale < -5f)
         {
