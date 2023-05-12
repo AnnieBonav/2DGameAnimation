@@ -4,6 +4,7 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// TODO: Implement changing time of day based on where they are going and not left or right
 public enum Tense { Past, Present, Future };
 public class Direction
 {
@@ -46,9 +47,7 @@ public class Level : MonoBehaviour
     public static event Action CompletedPuzzle;
 
     [SerializeField] private bool _verbose = true;
-    [SerializeField] private int _lapsToWin = 3;
-    [SerializeField] private Transform _worldTransform;
-    [SerializeField] private ChangeDay _changeDay;
+    [SerializeField] private int _lapsToWin = 3;    
 
     private bool _goingCorrectDirection = true; // Correct direction is the direction we started (after has direction)
     private bool _passedOtherBoundary = false; // If they have passed the other boundary they needed to
@@ -56,8 +55,6 @@ public class Level : MonoBehaviour
 
     private PlayerInput _playerInput;
     private Direction _currentDirection;
-
-    private float _lastWorldAngle;
 
     private void ResetVariables()
     {
@@ -74,7 +71,6 @@ public class Level : MonoBehaviour
         _playerInput = GetComponent<PlayerInput>();
         ExitPlate.TouchedExitPlate += DeactivateInput;
         ResetVariables();
-        _lastWorldAngle = _worldTransform.rotation.eulerAngles.z;
     }
 
     private void Start()
@@ -85,7 +81,7 @@ public class Level : MonoBehaviour
     private void CheckBoundaries(Direction touchedDirection)
     {      
         ChangeLaps(touchedDirection); // The direction of the boundary that was touched
-        if(_laps >= _lapsToWin)
+        if (_laps >= _lapsToWin && _currentDirection.Tense == Tense.Past)
         {
             CompletedPuzzle?.Invoke();
         }
@@ -104,7 +100,7 @@ public class Level : MonoBehaviour
 
     public void OnFire(InputValue input)
     {
-        print("\nGoing: " + _currentDirection.ToString() + "\nOther bundary has been touched: " + _passedOtherBoundary + "\nLaps: " + _laps + "\nCorrect direction: " + _goingCorrectDirection);
+        //print("\nGoing: " + _currentDirection.ToString() + "\nOther bundary has been touched: " + _passedOtherBoundary + "\nLaps: " + _laps + "\nCorrect direction: " + _goingCorrectDirection);
     }
 
     private void ChangeLaps(Direction touchedDirection)

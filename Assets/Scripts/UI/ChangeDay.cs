@@ -22,7 +22,6 @@ public class ChangeDay : MonoBehaviour
     public void UpdateAngle(float angle)
     {
         _angle += angle;
-        print("Added angle: " + angle + "   New: " + _angle);
     }
 
     private float ConvertFrom_Range1_Input_To_Range2_Output(float _input_range_min, float _input_range_max, float _output_range_min, float _output_range_max, float _input_value_tobe_converted)
@@ -36,10 +35,10 @@ public class ChangeDay : MonoBehaviour
     private void FixedUpdate()
     {
 
-        _scale = ConvertFrom_Range1_Input_To_Range2_Output(0, 360, 0, 1, _angle);
-        //print(_scale);
-        /*_horizonMaterial.SetFloat("_Offset", _scale);
-        if (_scale < -5f)
+        _scale = ConvertFrom_Range1_Input_To_Range2_Output(-720, 720, -0.5f, 6, _angle);
+        print("Scale: " +  _scale);
+        _horizonMaterial.SetFloat("_Offset", _scale);
+        /*if (_scale < -5f)
         {
             _scale = 2f;
         }*/

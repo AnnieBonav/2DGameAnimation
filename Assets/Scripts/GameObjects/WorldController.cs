@@ -8,6 +8,10 @@ namespace RotatingWorld
     {
         [SerializeField] private bool _verbose;
         [SerializeField] private float _rotationSpeed = 100;
+
+        [Header("Change day settings")]
+        [SerializeField] private ChangeDay _changeDay;
+
         private Transform _transform;
         private Vector2 _movement;
 
@@ -15,10 +19,13 @@ namespace RotatingWorld
         {
             _transform = GetComponent<Transform>();
             ExitPlate.TouchedExitPlate += CompletedPuzzle;
+
         }
         private void FixedUpdate()
         {
-            _transform.Rotate(0, 0, _movement.x * _rotationSpeed * Time.deltaTime);
+            float rotationChange = _movement.x * _rotationSpeed * Time.deltaTime;
+            _changeDay.UpdateAngle(rotationChange);
+            _transform.Rotate(0, 0, rotationChange);
         }
         private void CompletedPuzzle()
         {

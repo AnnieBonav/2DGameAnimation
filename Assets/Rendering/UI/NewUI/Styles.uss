@@ -1,0 +1,23 @@
+.menu-selector {
+    -unity-font: initial;
+    background-color: rgb(217, 217, 217);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    -unity-font-definition: url('project://database/Assets/UI/Hando-Regular%20SDF%201.asset?fileID=11400000&guid=a748193464322a54a9c027f827108c8a&type=2#Hando-Regular SDF 1');
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.menu-selector:hover {
+    scale: 1.1 1.1;
+}
+
+.menu-selector:focus {
+    scale: 0.95 0.95;
+}

@@ -3,6 +3,7 @@ using System.Collections;
 using Spine.Unity;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using Spine.Unity.AttachmentTools;
 using UnityEngine.SceneManagement;
 
 namespace RotatingWorld
@@ -14,8 +15,9 @@ namespace RotatingWorld
         [SpineAnimation][SerializeField] private string _idleAnimation;
         [SpineAnimation][SerializeField] private string _runAnimation;
         [SpineAnimation][SerializeField] private string _heavyBreathingAnimation;
+        [SpineAnimation][SerializeField] private string _levitateAnimation;
 
-        private SkeletonAnimation _skeletonAnimation;
+        [SerializeField] private SkeletonAnimation _skeletonAnimation;
         [SerializeField] private Spine.AnimationState _animationState;
         [SerializeField] private Spine.Skeleton _skeleton;
 
@@ -25,7 +27,7 @@ namespace RotatingWorld
         private Rigidbody2D _rb;
         private Vector2 _movement;
 
-        public enum PlayerState { Idle, Walking, Running, HeavyBreathing, Jumping };
+        public enum PlayerState { Idle, Walking, Running, HeavyBreathing, Jumping, Levitating };
         private PlayerState _playerState = PlayerState.Idle;
 
         private bool _facingRight = false;
@@ -33,17 +35,29 @@ namespace RotatingWorld
 
         private bool animate = false;
         private int turns = 5;
-        private Animation _animation;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _animation = GetComponent<Animation>();
             ExitPlate.TouchedExitPlate += CompletedPuzzle;
+        }
+
+        private void Start()
+        {
+            _animationState = _skeletonAnimation.AnimationState;
+            _skeleton = _skeletonAnimation.Skeleton;
+
+            _animationState.SetAnimation(0, _idleAnimation, true);
+
+            //Spine.TrackEntry trackEntry = _animationState.SetAnimation(0, "Main/Levitate", true);
+            //trackEntry.End += OnSpineAnimationEnd;
+
+            _animationState.Complete += OnSpineAnimationCompleted;
         }
 
         private void ChangeState(PlayerState newState)
         {
+            if (_playerState == PlayerState.Levitating) return; // Fix to not change back to anotehr
             switch (newState)
             {
                 case PlayerState.Idle:
@@ -60,22 +74,17 @@ namespace RotatingWorld
                         _animationState.SetAnimation(0, _runAnimation, true);
                     }
                     break;
+                case PlayerState.Levitating:
+                    if(_playerState != PlayerState.Levitating)
+                    {
+                        print("Changing animation");
+                        _playerState = newState;
+                        _animationState.SetAnimation(0, _levitateAnimation, false);
+                    }
+                    break;
             }
         }
-
-        private void Start()
-        {
-            _skeletonAnimation = GetComponent<SkeletonAnimation>();
-            _animationState = _skeletonAnimation.AnimationState;
-            _skeleton = _skeletonAnimation.Skeleton;
-
-            _animationState.SetAnimation(0, _idleAnimation, true);
-        }
-
-        private void FixedUpdate()
-        {
-        }
-
+        
         public void OnJump(InputValue value)
         {
             _rb.AddForce(new Vector2(0, _jumpForce));
@@ -92,8 +101,7 @@ namespace RotatingWorld
                 ChangeState(PlayerState.Running);
             }
             if (_movement.x == 0)
-            { // If there is no movement, change to idle?
-                if(_animationsVerbose) print("Change idle");
+            {
                 ChangeState(PlayerState.Idle);
             }
         }
@@ -108,19 +116,18 @@ namespace RotatingWorld
         private void CompletedPuzzle()
         {
             ShakeCamera.Invoke();
-            StartCoroutine(PlayAndWaitForAnimation());
+            ChangeState(PlayerState.Levitating);
+        }
 
-        }
-        private IEnumerator PlayAndWaitForAnimation()
+        private void OnSpineAnimationCompleted(Spine.TrackEntry trackEntry)
         {
-            _animation.Play();
-            while (_animation.isPlaying)
+            if(trackEntry.ToString() == "Main/Levitate")
             {
-                yield return null;
+                print("Finished levitate");
+                SceneManager.LoadScene("MenuScreen");
             }
-            print("Would change scene");
-            SceneManager.LoadScene(2);
         }
+        
 
         /*
         private IEnumerator Ascend()
